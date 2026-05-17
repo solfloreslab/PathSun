@@ -1,0 +1,40 @@
+{
+  "model_file": "pathsun_vgg16_best.keras",
+  "img_size": [
+    224,
+    224
+  ],
+  "class_names": [
+    "im_Dyskeratotic",
+    "im_Koilocytotic",
+    "im_Metaplastic",
+    "im_Parabasal",
+    "im_Superficial-Intermediate"
+  ],
+  "class_labels_es": {
+    "im_Dyskeratotic": "Disqueratosica",
+    "im_Koilocytotic": "Koilocitica",
+    "im_Metaplastic": "Metaplasica",
+    "im_Parabasal": "Parabasal",
+    "im_Superficial-Intermediate": "Superficial-Intermedia"
+  },
+  "class_group": {
+    "im_Dyskeratotic": "Anormal",
+    "im_Koilocytotic": "Anormal",
+    "im_Metaplastic": "Benigna",
+    "im_Parabasal": "Normal",
+    "im_Superficial-Intermediate": "Normal"
+  },
+  "test_accuracy": 0.9320987462997437,
+  "test_loss": 0.1952030509710312,
+  "seed": 42,
+  "keras_version": "3.13.2",
+  "keras_backend": "tensorflow",
+  "augmentation": [
+    "RandomFlip",
+    "RandomRotation",
+    "RandomZoom",
+    "RandomTranslation"
+  ],
+  "protocol_reference": "Kaur et al. (2025) DOI 10.1038/s41598-024-74531-0"
+}

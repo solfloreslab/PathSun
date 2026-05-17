@@ -1,0 +1,31 @@
+# Dataset (descargar por separado de SIPaKMeD)
+data/
+
+# Entornos Python
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Cache Python y Jupyter
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# Variables de entorno
+.env
+.env.*.local
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~

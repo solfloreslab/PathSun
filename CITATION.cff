@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "PathSun — Clasificador de células cervicales con Deep Learning"
+message: "Si usas este proyecto, cita también el dataset SIPaKMeD (Plissiti et al. 2018)."
+type: software
+authors:
+  - alias: SolFloresLab
+date-released: 2026-05
+license: MIT
+url: "https://github.com/SolFloresLab/PathSun"
+
+references:
+  - type: article
+    authors:
+      - family-names: Plissiti
+        given-names: M. E.
+      - family-names: Dimitrakopoulos
+        given-names: P.
+      - family-names: Sfikas
+        given-names: G.
+      - family-names: Nikou
+        given-names: C.
+      - family-names: Krikoni
+        given-names: O.
+      - family-names: Charchanti
+        given-names: A.
+    title: "SIPaKMeD: A new dataset for feature and image based classification of normal and pathological cervical cells in Pap smear images"
+    year: 2018
+    journal: IEEE International Conference on Image Processing (ICIP)
+    doi: 10.1109/ICIP.2018.8451588
+  - type: article
+    authors:
+      - family-names: Kaur
+        given-names: A.
+    title: "Comparison of deep transfer learning models for classification of cervical cancer from pap smear images"
+    year: 2025
+    journal: Scientific Reports
+    doi: 10.1038/s41598-024-74531-0
