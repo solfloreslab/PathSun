@@ -20,7 +20,7 @@ st.set_page_config(
     page_title="PathSun",
     page_icon=str(FAVICON),
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 from _theme import apply_pathsun_theme
