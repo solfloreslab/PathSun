@@ -59,8 +59,12 @@ header[data-testid="stHeader"] {{
     display: block !important;
 }}
 
-/* === Alertas info en lila PathSun === */
-div[data-testid="stAlert"] {{
+/* === Alertas: solo INFO en lila, success/error/warning mantienen su color semantico === */
+/* Probamos varios selectores porque Streamlit varia entre versiones */
+div[data-testid="stAlert"][kind="info"],
+div[data-testid="stAlertContentInfo"],
+div[data-testid="stInfo"],
+div[data-testid="stAlert"]:has([data-testid="stAlertContentInfo"]) {{
     background-color: #F0EBFC !important;
     border-left: 4px solid #6B5BF6 !important;
 }}
