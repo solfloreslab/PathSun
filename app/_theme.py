@@ -24,9 +24,24 @@ _LOGO_B64 = base64.b64encode(_LOGO_HORIZONTAL.read_bytes()).decode()
 
 _THEME_CSS = f"""
 <style>
-/* === Header de Streamlit oculto (recupera espacio) === */
-header[data-testid="stHeader"] {{
-    display: none !important;
+/* === Header de Streamlit: oculto SOLO en desktop (en movil mostramos para */
+/* === acceder al boton hamburguesa que abre la sidebar) === */
+@media (min-width: 769px) {{
+    header[data-testid="stHeader"] {{
+        display: none !important;
+    }}
+}}
+@media (max-width: 768px) {{
+    header[data-testid="stHeader"] {{
+        display: flex !important;
+        height: 50px !important;
+        background-color: #FFFFFF !important;
+        border-bottom: 1px solid #E0D6F8 !important;
+    }}
+    /* Espacio para no quedar bajo el header en movil */
+    .block-container {{
+        padding-top: 3.5rem !important;
+    }}
 }}
 /* Sidebar mas estrecha (recupera espacio) */
 [data-testid="stSidebar"] {{
