@@ -217,7 +217,7 @@ with st.container(border=True):
         }).sort_values("Probabilidad", ascending=False)
         st.bar_chart(
             probs_df, x="Clase", y="Probabilidad",
-            horizontal=True, height=220, color="#6B5BF6",
+            horizontal=True, height=220, color="#7C3AED",
         )
 
 if show_gradcam:

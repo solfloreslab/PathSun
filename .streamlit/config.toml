@@ -1,13 +1,13 @@
 # Tema de la app PathSun
 # Paleta:
 #   #0D1B4C dark blue   -> texto principal
-#   #6B5BF6 purple      -> primario (botones, sliders, links activos)
+#   #7C3AED purple      -> primario (botones, sliders, links activos) — morado mas vivo
 #   #B38BFB light purple (acento secundario)
 #   #FFC857 yellow gold -> acento de marca
 #   #FFF3D6 cream       -> sidebar y bloques secundarios
 
 [theme]
-primaryColor = "#6B5BF6"
+primaryColor = "#7C3AED"
 backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#FFF3D6"
 textColor = "#0D1B4C"

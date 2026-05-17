@@ -2,7 +2,7 @@
 
 Centraliza:
 - Logo PathSun en la franja blanca superior (header nativo de Streamlit)
-- Alertas info recoloreadas a lila #6B5BF6 (paleta PathSun) en vez del celeste
+- Alertas info recoloreadas a lila #7C3AED (paleta PathSun) en vez del celeste
   por defecto
 - Padding superior del body para no quedar tapado por el header
 - Oculta el logo del sidebar (ya esta en el header)
@@ -66,7 +66,7 @@ div[data-testid="stAlertContentInfo"],
 div[data-testid="stInfo"],
 div[data-testid="stAlert"]:has([data-testid="stAlertContentInfo"]) {{
     background-color: #F0EBFC !important;
-    border-left: 4px solid #6B5BF6 !important;
+    border-left: 4px solid #7C3AED !important;
 }}
 
 /* === Cards bordered (st.container(border=True)) con estilo PathSun === */
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {{
 
 /* === Mejorar st.metric === */
 [data-testid="stMetricValue"] {{
-    color: #6B5BF6;
+    color: #7C3AED;
     font-weight: 700;
 }}
 [data-testid="stMetricLabel"] {{
@@ -173,8 +173,8 @@ h1, h2, h3, h4, h5, h6 {{
 
 /* === Botones primarios en morado PathSun === */
 .stButton > button[kind="primary"] {{
-    background-color: #6B5BF6;
-    border-color: #6B5BF6;
+    background-color: #7C3AED;
+    border-color: #7C3AED;
 }}
 .stButton > button[kind="primary"]:hover {{
     background-color: #5848D8;
