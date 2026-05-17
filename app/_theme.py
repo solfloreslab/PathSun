@@ -141,6 +141,32 @@ h1, h2, h3, h4, h5, h6 {{
     font-weight: 500;
 }}
 
+/* === Responsive: ajustes para movil y tablet === */
+@media (max-width: 768px) {{
+    .block-container {{
+        padding-top: 0.5rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        max-width: 100% !important;
+    }}
+    [data-testid="stVerticalBlockBorderWrapper"] {{
+        padding: 0.6rem !important;
+        border-radius: 0.5rem !important;
+    }}
+    [data-testid="stSidebar"] {{
+        min-width: auto !important;
+        max-width: 280px !important;
+    }}
+    [data-testid="stSidebar"] [data-testid="stLogo"] img {{
+        width: 160px !important;
+        max-width: 160px !important;
+    }}
+    h1 {{ font-size: 1.5rem !important; }}
+    h2 {{ font-size: 1.3rem !important; }}
+    h3 {{ font-size: 1.15rem !important; }}
+    h4 {{ font-size: 1rem !important; }}
+}}
+
 /* === Botones primarios en morado PathSun === */
 .stButton > button[kind="primary"] {{
     background-color: #6B5BF6;
