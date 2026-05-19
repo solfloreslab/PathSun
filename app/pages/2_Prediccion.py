@@ -36,17 +36,9 @@ _sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from _theme import apply_pathsun_theme
 apply_pathsun_theme()
 
-st.title("Prediccion sobre imagen")
+st.markdown("### 🔬 Predicción sobre imagen")
 st.caption(
-    "Sube una imagen de citologia cervical y el modelo VGG16 entrenado "
-    "(test accuracy 93.21%) la clasifica en una de las 5 clases SIPaKMeD."
-)
-
-st.info(
-    "**Esta pagina es un laboratorio para evaluar el modelo, no para aprender citologia.** "
-    "Sube imagenes de las que ya conozcas la respuesta y compara con la sugerencia del modelo. "
-    "Si lo que buscas es aprender o practicar, usa el **Modo Docente**.",
-    icon="🔬",
+    "Laboratorio para evaluar el modelo (test acc 93.21%). Para aprender citología, usa el **Modo Docente**."
 )
 
 if not META_PATH.exists() or not MODEL_PATH.exists():
@@ -161,16 +153,19 @@ def overlay_heatmap(original_rgb_uint8, heatmap, alpha=0.4):
 
 # --- UI ---
 
-uploaded = st.file_uploader(
-    "Sube una imagen (.bmp, .jpg, .png)",
-    type=["bmp", "jpg", "jpeg", "png"],
-)
-
-show_gradcam = st.toggle(
-    "Ver Grad-CAM (mapa de calor de las regiones que mas pesan en la decision)",
-    value=True,
-    help="Activado por defecto - es valor pedagogico clave: muestra que mira el modelo.",
-)
+col_up, col_tog = st.columns([3, 1], gap="medium")
+with col_up:
+    uploaded = st.file_uploader(
+        "Sube una imagen (.bmp, .jpg, .png)",
+        type=["bmp", "jpg", "jpeg", "png"],
+        label_visibility="collapsed",
+    )
+with col_tog:
+    show_gradcam = st.toggle(
+        "Ver Grad-CAM",
+        value=True,
+        help="Mapa de calor de las regiones que más pesan en la decisión.",
+    )
 
 if uploaded is None:
     st.info("Esperando una imagen para analizar.")
@@ -189,56 +184,43 @@ pred_color = GROUP_COLOR[pred_group]
 pred_confidence = float(probs[pred_idx])
 
 
+if show_gradcam:
+    with st.spinner("Calculando mapa de calor..."):
+        heatmap = make_gradcam_heatmap(img_preprocessed, model, pred_index=pred_idx)
+        overlay = overlay_heatmap(img_rgb_uint8, heatmap, alpha=0.4)
+
 with st.container(border=True):
-    col_img, col_pred = st.columns([1, 1], gap="large")
+    if show_gradcam:
+        col_img, col_cam, col_pred = st.columns([1, 1, 1.4], gap="medium")
+    else:
+        col_img, col_pred = st.columns([1, 1.4], gap="medium")
+        col_cam = None
 
     with col_img:
-        st.image(img_rgb_uint8, caption="Imagen (224x224 RGB tras resize)", width=300)
+        st.image(img_rgb_uint8, caption="Original (224×224)", width=230)
+
+    if col_cam is not None:
+        with col_cam:
+            st.image(overlay, caption=f"Grad-CAM · {pred_class_es}", width=230)
 
     with col_pred:
         st.markdown(
-            f"### El modelo sugiere: <span style='color:{pred_color}'>{pred_class_es}</span>",
+            f"##### El modelo sugiere: <span style='color:{pred_color}'>{pred_class_es}</span>"
+            f"  ·  <span style='color:{pred_color};font-size:0.9em'>{pred_group}</span>"
+            f"  ·  **{pred_confidence:.0%}**",
             unsafe_allow_html=True,
         )
-        st.markdown(
-            f"**Grupo morfológico sugerido:** "
-            f"<span style='color:{pred_color}'><b>{pred_group}</b></span>",
-            unsafe_allow_html=True,
-        )
-        st.metric("Confianza del modelo", f"{pred_confidence:.1%}")
-        st.caption(
-            "La sugerencia del modelo no es diagnóstico. La autoridad de la "
-            "verdad es la lectura citopatológica humana."
-        )
-
         probs_df = pd.DataFrame({
             "Clase": [CLASS_LABELS_ES[c] for c in CLASS_NAMES],
             "Probabilidad": probs,
         }).sort_values("Probabilidad", ascending=False)
         st.bar_chart(
             probs_df, x="Clase", y="Probabilidad",
-            horizontal=True, height=220, color="#7C3AED",
+            horizontal=True, height=200, color="#7C3AED",
         )
-
-if show_gradcam:
-    with st.container(border=True):
-        st.markdown("##### 🔍 Grad-CAM — dónde mira el modelo")
-        with st.spinner("Calculando mapa de calor..."):
-            heatmap = make_gradcam_heatmap(img_preprocessed, model, pred_index=pred_idx)
-            overlay = overlay_heatmap(img_rgb_uint8, heatmap, alpha=0.4)
-
-        col_orig, col_cam = st.columns(2)
-        with col_orig:
-            st.image(img_rgb_uint8, caption="Original", width=320)
-        with col_cam:
-            st.image(overlay, caption=f"Grad-CAM α=0.4 sobre clase {pred_class_es}",
-                     width=320)
-
         st.caption(
-            "Rojo = regiones de alta activación. **Es una hipótesis visual de "
-            "dónde mira el modelo, no una verdad sobre su razonamiento** "
-            "(Selvaraju et al. 2017). Idealmente deberían solaparse con núcleo "
-            "y citoplasma de la célula, no con fondo ni artefactos."
+            "Sugerencia del modelo, no diagnóstico. Grad-CAM: hipótesis visual de "
+            "dónde mira la red (Selvaraju et al. 2017), idealmente sobre núcleo/citoplasma."
         )
 
 with st.expander("Sobre el metodo y referencias"):
