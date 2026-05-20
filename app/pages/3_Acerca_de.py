@@ -83,8 +83,8 @@ with st.container(border=True):
     st.markdown("#### 🎓 Marco pedagógico del Modo Docente")
     st.markdown(
         "El Modo Docente está inspirado en **CellaVision Proficiency Software**, "
-        "herramienta usada en formación de técnicos de laboratorio en hematología "
-        "(Krupinski et al. 2016). PathSun replica esa arquitectura para citología "
+        "herramienta comercial usada en formación de técnicos de laboratorio en hematología. "
+        "PathSun replica esa arquitectura para citología "
         "cervical bajo **tres reglas innegociables**:\n\n"
         "1. **Lock-then-reveal:** el alumno clasifica primero, la IA habla después.\n"
         "2. **La IA da material para pensar, no respuestas:** distribución de "
@@ -92,7 +92,7 @@ with st.container(border=True):
         "3. **El ground truth siempre es humano:** la autoridad de la verdad es el "
         "citopatólogo que anotó SIPaKMeD, no la predicción del modelo.\n\n"
         "Esto distingue *segundo par de ojos* (lo deseable) de *oráculo* (lo que la "
-        "evidencia anti-automatización rechaza: Rudolph et al. 2023, Budzyn et al. "
+        "evidencia anti-automatización rechaza: Rudolph et al. 2022, Budzyn et al. "
         "2025, Dratsch et al. 2023)."
     )
 
@@ -128,10 +128,13 @@ with st.container(border=True):
         "networks for large-scale image recognition. arXiv:1409.1556\n"
         "- **Selvaraju, R. R.** et al. (2017). Grad-CAM: visual explanations "
         "from deep networks via gradient-based localization. *ICCV 2017*.\n"
-        "- **Krupinski, E. A.** et al. (2016). Using CellaVision Proficiency "
-        "Software to train competent hematology students. *BMC Medical "
-        "Education*, 16, 212. DOI: 10.1186/s12909-016-0816-9\n"
-        "- **Rudolph, J.** et al. (2023). Automation bias in radiology with CADe.\n"
+        "- **CellaVision AB** (2024). CellaVision Proficiency Software — "
+        "Product information. Lund, Sweden. "
+        "https://www.cellavision.com/products/cellavision-proficiency-software\n"
+        "- **Rudolph, J.** et al. (2022). Clinically focused multi-cohort "
+        "benchmarking as a tool for external validation of artificial "
+        "intelligence algorithm performance in basic chest radiography "
+        "analysis. *Scientific Reports*, 12, 12764.\n"
         "- **Budzyn, K.** et al. (2025). Deskilling tras retirada de IA.\n"
         "- **Dratsch, T.** et al. (2023). Efecto de la IA en el razonamiento médico."
     )

@@ -1,7 +1,7 @@
 """Pagina 2 - Modo Docente.
 
-Arquitectura pedagogica inspirada en CellaVision Proficiency Software
-(Krupinski et al. 2016, BMC Med Educ 16:212), validada en FP de hematologia.
+Arquitectura pedagogica inspirada en CellaVision Proficiency Software,
+herramienta comercial usada en formacion de tecnicos de hematologia.
 
 Tres reglas innegociables (ver `project_pathsun_pedagogy.md` en memoria):
 
@@ -284,8 +284,8 @@ def render_welcome():
         st.markdown(
             "Aprenderás citología mirando **30 casos seleccionados** del dataset "
             "SIPaKMeD (6 por clase). Mecánica inspirada en **CellaVision "
-            "Proficiency Software** (Krupinski et al. 2016, BMC Med Educ "
-            "16:212), validada en FP de hematología:"
+            "Proficiency Software**, herramienta comercial usada en formación "
+            "de técnicos de hematología:"
         )
         st.markdown(
             "1. Miras la imagen sin saber qué es\n"
